@@ -10,9 +10,9 @@ materialsRouter.post("", async (req, res) => {
         try {
             const arr = req.body;
             await Joi.validate({...arr}, materials);
-            const saveMaterials = new MaterialModel(arr);
+            const saveMaterials = new MaterialModel(arr, { versionKey: false });
             saveMaterials.save();
-            res.send("success saved");
+            res.send(saveMaterials);
         }
         catch
             (err) {
@@ -30,6 +30,17 @@ materialsRouter.get("", async (req, res) => {
         })
     } catch (err) {
         res.status(500).send(parseError(err));
+    }
+});
+
+materialsRouter.delete("", async (req, res) => {
+    try {
+        const id = req.body.id;
+        await MaterialModel.deleteOne({_id: id}).then(result => {
+            res.send({ok: result.ok});
+        });
+    } catch (e) {
+        res.status(500).send(parseError(e));
     }
 });
 
