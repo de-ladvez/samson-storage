@@ -23,7 +23,7 @@ materialsRouter.put("", async (req, res) => {
 
 materialsRouter.get("", async (req, res) => {
     try {
-        const obj = req.body;
+        const obj = req.query;
 
         await MaterialModel.find(obj).then(answer => {
             res.send(answer);

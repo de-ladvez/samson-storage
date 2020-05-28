@@ -8,7 +8,7 @@ const containerRouter = express.Router();
 
 containerRouter.put("", async (req, res) => {
         try {
-            const arr = req.body;
+            const arr = req.params;
             await Joi.validate({...arr}, container);
             const saveContainer = new ContainerModel (arr, { versionKey: false });
             saveContainer.save();
@@ -23,8 +23,7 @@ containerRouter.put("", async (req, res) => {
 
 containerRouter.get("", async (req, res) => {
     try {
-        const obj = req.body;
-
+        const obj = req.query;
         await ContainerModel.find(obj).then(answer => {
             res.send(answer);
         })
