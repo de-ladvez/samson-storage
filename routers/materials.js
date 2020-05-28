@@ -37,7 +37,7 @@ materialsRouter.delete("", async (req, res) => {
     try {
         const id = req.body.id;
         await MaterialModel.deleteOne({_id: id}).then(result => {
-            res.send({ok: result.ok});
+            res.send(result);
         });
     } catch (e) {
         res.status(500).send(parseError(e));
