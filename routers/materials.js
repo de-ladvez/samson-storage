@@ -6,7 +6,7 @@ import {parseError} from "../util/helper"
 
 const materialsRouter = express.Router();
 
-materialsRouter.post("", async (req, res) => {
+materialsRouter.put("", async (req, res) => {
         try {
             const arr = req.body;
             await Joi.validate({...arr}, materials);

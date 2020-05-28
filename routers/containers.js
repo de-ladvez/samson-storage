@@ -6,7 +6,7 @@ import {parseError} from "../util/helper"
 
 const containerRouter = express.Router();
 
-containerRouter.post("", async (req, res) => {
+containerRouter.put("", async (req, res) => {
         try {
             const arr = req.body;
             await Joi.validate({...arr}, container);
