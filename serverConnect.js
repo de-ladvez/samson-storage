@@ -1,7 +1,10 @@
 import {header} from "./header";
-import {apiRouters} from "./routers"
+import {apiRouters} from "./routers";
 import {MONGO_URI, PORT} from "./config";
 import mongoose from "mongoose";
+var https = require('https')
+
+var fs = require('fs')
 const express = require('express');
 const bodyParser = require("body-parser");
 
@@ -26,10 +29,14 @@ const bodyParser = require("body-parser");
         app.use(express.urlencoded({extended: true}));
         app.use(express.json());
         app.use("/api", apiRouters);
-
-        app.listen(PORT, () => {
-            console.log(`listening on ${PORT} port`);
-        });
+        https.createServer({
+        }, app)
+            .listen(PORT, function () {
+                console.log('Example app listening on port 3000! Go to https://localhost:3000/')
+            })
+        // app.listen(PORT, () => {
+        //     console.log(`listening on ${PORT} port`);
+        // });
     } catch (err) {
         console.error(err);
 
