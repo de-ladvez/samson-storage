@@ -29,12 +29,15 @@ const bodyParser = require("body-parser");
         app.use(express.urlencoded({extended: true}));
         app.use(express.json());
         app.use("/api", apiRouters);
-        // https.createServer(app).listen(PORT, function () {
-        //         console.log(`Example app listening on port ${PORT}! Go to https://localhost:3000/`)
-        //     })
-        app.listen(PORT, () => {
-            console.log(`listening on ${PORT} port`);
-        });
+        https.createServer({
+            key: fs.readFileSync('server.key'),
+            cert: fs.readFileSync('server.cert')
+        },app).listen(PORT, function () {
+                console.log(`Example app listening on port ${PORT}! Go to https://localhost:3000/`)
+            })
+        // app.listen(PORT, () => {
+        //     console.log(`listening on ${PORT} port`);
+        // });
     } catch (err) {
         console.error(err);
 
