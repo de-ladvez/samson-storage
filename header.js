@@ -1,7 +1,8 @@
 export const header = (req, res, next) => {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://ec2-54-218-54-169.us-west-2.compute.amazonaws.com');
+    // res.setHeader('Access-Control-Allow-Origin', 'http://ec2-54-218-54-169.us-west-2.compute.amazonaws.com');
+    res.setHeader('Access-Control-Allow-Origin', '*');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
