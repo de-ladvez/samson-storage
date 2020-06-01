@@ -8,7 +8,7 @@ const containerRouter = express.Router();
 
 containerRouter.put("", async (req, res) => {
         try {
-            const arr = req.params;
+            const arr = req.body;
             await Joi.validate({...arr}, container);
             const saveContainer = new ContainerModel (arr, { versionKey: false });
             saveContainer.save();
