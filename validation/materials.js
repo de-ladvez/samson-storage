@@ -2,7 +2,7 @@ import Joi from "@hapi/joi";
 
 const boolean = Joi.boolean().truthy("1").truthy("yes").truthy("true").truthy(1).falsy("0").falsy("no").falsy("false").falsy(1);
 
-const barcode = Joi.number().string().required();
+const barcode = Joi.string().required();
 const name = Joi.string().required();
 const description = Joi.string().empty("");
 const weight = Joi.number();
