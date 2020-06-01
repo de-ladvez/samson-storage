@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const containerSchema = mongoose.Schema({
     barcode: {
-        type: Number,
+        type: String,
         unique: true
     },
     name: String,
@@ -21,7 +21,7 @@ const containerSchema = mongoose.Schema({
     manufacturerdate: String
 });
 
-const containerModel = mongoose.model("container", containerSchema);
+const ContainerModel = mongoose.model("container", containerSchema);
 
-export default containerModel;
+export default ContainerModel;
 

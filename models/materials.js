@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const materialsSchema = mongoose.Schema({
     barcode: {
-        type: Number,
+        type: String,
         unique: true
     },
     name: String,
